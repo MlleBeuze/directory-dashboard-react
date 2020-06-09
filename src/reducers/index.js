@@ -1,1 +1,4 @@
-export { contactListReducer, contactDetailsReducer } from "./contactReducers";
+export {
+  loadContactsReducer,
+  loadOneContactReducer,
+} from "./contactReducers";

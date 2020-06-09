@@ -10,27 +10,35 @@ import {
 // Reducer is a function that accepts a state and an action,
 // and returns an updated state based on the action
 
-export function contactListReducer(state = { contacts: [] }, action) {
+export function loadContactsReducer(state = { contacts: [] }, action) {
   switch (action.type) {
     case CONTACT_LIST_REQUEST:
-      return { loading: true };
+      return { ...state, loading: true };
     case CONTACT_LIST_SUCCESS:
-      return { loading: false, contacts: action.payload };
+      return { ...state, loading: false, contacts: action.payload.data };
     case CONTACT_LIST_FAIL:
-      return { loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: "Error while fetching contacts",
+      };
     default:
       return state;
   }
 }
 
-export function contactDetailsReducer(state = { contact: {} }, action) {
+export function loadOneContactReducer(state = { contact: {} }, action) {
   switch (action.type) {
     case CONTACT_DETAILS_REQUEST:
-      return { loading: true };
+      return { ...state, loading: true };
     case CONTACT_DETAILS_SUCCESS:
-      return { loading: false, contact: action.payload };
+      return { ...state, loading: false, contact: action.payload.data };
     case CONTACT_DETAILS_FAIL:
-      return { loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.error.response.data.message || action.message,
+      };
     default:
       return state;
   }

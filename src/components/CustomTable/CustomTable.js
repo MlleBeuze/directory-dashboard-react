@@ -80,9 +80,6 @@ const CustomTable = (props) => {
     setRowsPerPage(event.target.value);
   };
 
-  // console.log("headers", headers);
-  // console.log("columns", columns);
-
   return (
     <Card {...rest} className={clsx(classes.root, className)}>
       <CardContent className={classes.content}>

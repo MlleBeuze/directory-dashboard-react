@@ -10,11 +10,11 @@ import {
 } from "./components";
 
 import { useSelector, useDispatch } from "react-redux";
-import { listContacts } from "../../actions/contactActions";
+import { getContacts } from "../../actions/contactActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(3),
+    // padding: theme.spacing(3),
   },
   content: {
     marginTop: theme.spacing(2),
@@ -24,14 +24,12 @@ const useStyles = makeStyles((theme) => ({
 const Contacts = () => {
   const classes = useStyles();
   const { contacts, loading, error } = useSelector(
-    (state) => state.contactList
+    (state) => state.loadContacts
   );
   const dispatch = useDispatch();
-  console.log("contactsssss", contacts);
 
   useEffect(() => {
-    dispatch(listContacts());
-    console.log("dispatch");
+    dispatch(getContacts());
   }, [dispatch]);
 
   return loading ? (
