@@ -4,11 +4,17 @@ import { Switch, Redirect } from "react-router-dom";
 import { RouteWithLayout } from "./components";
 import { Main as MainLayout, Minimal as MinimalLayout } from "./layouts";
 
-import { Dashboard as DashboardView, NotFound as NotFoundView } from "./views";
+import {
+  Dashboard as DashboardView,
+  Contacts as ContactsView,
+  SingleContact as SingleContactView,
+  NotFound as NotFoundView,
+} from "./views";
 
 const routes = [
   { path: "/dashboard", component: DashboardView },
-  { path: "/contacts", component: DashboardView },
+  { path: "/contacts", component: ContactsView },
+  { path: "/contacts/:id", component: SingleContactView },
   { path: "/organizations", component: DashboardView },
   { path: "/categories", component: DashboardView },
   { path: "/countries", component: DashboardView },
@@ -31,7 +37,7 @@ const Routes = () => {
           path={route.path}
         />
       ))}
-      <Redirect to="/not-found" />
+      {/* <Redirect to="/not-found" /> */}
     </Switch>
   );
 };
